@@ -34,7 +34,7 @@ resource "aws_instance" "ansible_master" {
       "sudo yum install -y openssh-server || sudo apt install -y openssh-server",
       "sudo yum install -y ansible || sudo apt install -y ansible",
       "ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ''",
-      "cat ~/.ssh/id_rsa.pub"
+      "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys"
     ]
 
     connection {
