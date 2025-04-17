@@ -47,7 +47,7 @@ resource "aws_instance" "ansible_master" {
 
 # Get the public key from master to the local machine 
   provisioner "local-exec" {
-    command = "ssh -o StrictHostKeyChecking=no -i kube.pem ${var.master_os == "ubuntu" ? "ubuntu" : "ec2-user"}@${self.public_ip} 'cat ~/.ssh/id_rsa.pub' > master_id_rsa.pub"
+    command = "ssh -o StrictHostKeyChecking=no -i ${var.key_name}.pem ${var.master_os == "ubuntu" ? "ubuntu" : "ec2-user"}@${self.public_ip} 'cat ~/.ssh/id_rsa.pub' > master_id_rsa.pub"
   }
 }
 
